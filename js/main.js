@@ -3,7 +3,7 @@
    ============================================================ */
 
 /* ── Page Navigation ── */
-const PAGES = ['home', 'about', 'galleries', 'contact', 'mobile'];
+const PAGES = ['home', 'about', 'galleries', 'contact'];
 
 function showPage(id) {
   // Hide all pages

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FlicksByNick — Action Sports Photography</title>
+  <title>FlicksByNick</title>
 
   <!-- Bootstrap 5 CSS -->
   <link
@@ -32,6 +32,48 @@
 </head>
 <body>
 
+<!-- ══════════════════════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════════════════════ -->
+<nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
+  <div class="container-fluid nav-container">
+
+    <a class="navbar-brand" href="#" onclick="showPage('home'); return false;">
+      <span>Flicks</span>ByNick
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link active-link" data-page="home" href="#" onclick="showPage('home'); return false;">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-page="about" href="#" onclick="showPage('about'); return false;">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-page="galleries" href="#" onclick="showPage('galleries'); return false;">Galleries</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-page="contact" href="#" onclick="showPage('contact'); return false;">Contact</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
 
 <!-- ══════════════════════════════════════════════════════════
      PAGE: HOME
@@ -58,7 +100,7 @@
 
   <!-- Featured Work -->
   <section class="featured-section">
-    <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-3">
+    <div class="featured-header">
       <div>
         <span class="section-label">Selected Work</span>
         <h2 class="section-title display-font mb-0">Featured Work</h2>
@@ -105,11 +147,10 @@
 
   <!-- About Preview -->
   <section class="about-preview-section">
-    <div class="row align-items-center g-5" style="max-width:1200px;">
+    <div class="row align-items-center g-5 about-preview-row">
       <div class="col-lg-5">
         <div class="about-img-frame">
-          <div>
-            <!-- Person placeholder SVG -->
+          <div class="about-img-placeholder">
             <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
               <circle cx="26" cy="22" r="10" stroke="#E8B84B" stroke-width="1.5" opacity="0.5"/>
               <path d="M10 40c0-8.837 7.163-16 16-16s16 7.163 16 16" stroke="#E8B84B" stroke-width="1.5" opacity="0.5"/>
@@ -132,7 +173,7 @@
 
   <!-- CTA Strip -->
   <section class="cta-strip">
-    <span class="section-label" style="color:rgba(0,0,0,0.5);">Work Together</span>
+    <span class="section-label cta-label-dark">Work Together</span>
     <h2 class="section-title display-font">Book or Inquire<br>About Coverage</h2>
     <p>Game day coverage, tournaments, and events. Let's create something unforgettable.</p>
     <a href="#" class="btn-dark-custom" onclick="showPage('contact'); return false;">
@@ -140,11 +181,10 @@
     </a>
   </section>
 
-  <!-- Footer -->
   <footer class="site-footer">
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-4">
+    <div class="footer-inner">
       <div class="footer-brand"><span>Flicks</span>ByNick</div>
-      <div class="d-flex flex-column align-items-center gap-2">
+      <div class="footer-center">
         <span class="footer-email">nick@flicksbynick.com</span>
         <div>
           <a href="#" class="footer-social-btn">IG</a>
@@ -164,7 +204,6 @@
 ══════════════════════════════════════════════════════════ -->
 <div id="page-about" class="site-page">
 
-  <!-- About Hero -->
   <div class="about-hero">
     <img class="about-hero-bg" src="images/hero.jpeg" alt="" />
     <div class="about-hero-content">
@@ -177,11 +216,8 @@
     </div>
   </div>
 
-  <!-- About Body -->
-  <section style="background: var(--dark); padding: 80px 64px 90px;">
-    <div class="row g-5" style="max-width:1200px;">
-
-      <!-- Portrait + Stats -->
+  <section class="about-body-section">
+    <div class="row g-5 about-body-row">
       <div class="col-lg-4">
         <div class="portrait-placeholder">
           <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
@@ -205,13 +241,11 @@
           </div>
         </div>
       </div>
-
-      <!-- Text Content -->
       <div class="col-lg-8">
         <div class="about-block">
           <h3><span>Background</span></h3>
           <p>Nicholas Carmichael is a New Jersey-based sports photographer who has been documenting local athletic excellence since his early years in high school. What started as a passion project with a borrowed camera has grown into a recognized portfolio spanning football, wrestling, basketball, and more.</p>
-          <p>His work has been featured in school publications, local media outlets, and across social platforms where athletes and families connect with the moments that define their seasons. Every shot is taken with precision, patience, and a deep respect for the sport.</p>
+          <p>His work has been featured in school publications, local media outlets, and across social platforms where athletes and families connect with the moments that define their seasons.</p>
           <p>Whether courtside, sideline, or on the mat, Nicholas brings a journalistic eye and a cinematic sensibility that transforms game-day action into lasting visual stories.</p>
         </div>
         <div class="about-block">
@@ -221,13 +255,11 @@
           <p>The sideline is not just a vantage point — it's a front-row seat to some of the most authentic, unscripted human drama you'll ever witness. That's what keeps the shutter clicking.</p>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="cta-strip">
-    <span class="section-label" style="color:rgba(0,0,0,0.5);">Let's Work Together</span>
+    <span class="section-label cta-label-dark">Let's Work Together</span>
     <h2 class="section-title display-font">Ready to Cover<br>Your Team?</h2>
     <p>Reach out about event coverage, team packages, or custom photo requests.</p>
     <a href="#" class="btn-dark-custom" onclick="showPage('contact'); return false;">
@@ -235,11 +267,10 @@
     </a>
   </section>
 
-  <!-- Footer -->
   <footer class="site-footer">
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-4">
+    <div class="footer-inner">
       <div class="footer-brand"><span>Flicks</span>ByNick</div>
-      <div class="d-flex flex-column align-items-center gap-2">
+      <div class="footer-center">
         <span class="footer-email">nick@flicksbynick.com</span>
         <div>
           <a href="#" class="footer-social-btn">IG</a>
@@ -264,7 +295,6 @@
     <h1 class="section-title display-font">Photo Galleries</h1>
   </div>
 
-  <!-- Filter Buttons -->
   <div class="filter-bar">
     <button class="filter-btn active" onclick="filterGallery('all', this)">All Sports</button>
     <button class="filter-btn" onclick="filterGallery('football', this)">Football</button>
@@ -272,17 +302,11 @@
     <button class="filter-btn" onclick="filterGallery('othersports', this)">Other Sports</button>
   </div>
 
-  <!-- Gallery Grid — all placeholders -->
   <div class="gallery-grid" id="galleryGrid">
 
-    <!-- Football -->
     <div class="gallery-item" data-cat="football">
       <div class="gallery-item-inner">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-        </svg>
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/></svg>
         <span class="placeholder-label">Coming Soon</span>
       </div>
       <div class="gallery-watermark"><span>FlicksByNick</span></div>
@@ -291,11 +315,7 @@
 
     <div class="gallery-item" data-cat="football">
       <div class="gallery-item-inner">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-        </svg>
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/></svg>
         <span class="placeholder-label">Coming Soon</span>
       </div>
       <div class="gallery-watermark"><span>FlicksByNick</span></div>
@@ -304,25 +324,16 @@
 
     <div class="gallery-item" data-cat="football">
       <div class="gallery-item-inner">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-        </svg>
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/></svg>
         <span class="placeholder-label">Coming Soon</span>
       </div>
       <div class="gallery-watermark"><span>FlicksByNick</span></div>
       <div class="gallery-sport-tag">Football</div>
     </div>
 
-    <!-- Wrestling -->
     <div class="gallery-item" data-cat="wrestling">
       <div class="gallery-item-inner">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-        </svg>
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/></svg>
         <span class="placeholder-label">Coming Soon</span>
       </div>
       <div class="gallery-watermark"><span>FlicksByNick</span></div>
@@ -331,11 +342,7 @@
 
     <div class="gallery-item" data-cat="wrestling">
       <div class="gallery-item-inner">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-        </svg>
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/></svg>
         <span class="placeholder-label">Coming Soon</span>
       </div>
       <div class="gallery-watermark"><span>FlicksByNick</span></div>
@@ -344,25 +351,16 @@
 
     <div class="gallery-item" data-cat="wrestling">
       <div class="gallery-item-inner">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-        </svg>
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/></svg>
         <span class="placeholder-label">Coming Soon</span>
       </div>
       <div class="gallery-watermark"><span>FlicksByNick</span></div>
       <div class="gallery-sport-tag">Wrestling</div>
     </div>
 
-    <!-- Other Sports -->
     <div class="gallery-item" data-cat="othersports">
       <div class="gallery-item-inner">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-        </svg>
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/></svg>
         <span class="placeholder-label">Coming Soon</span>
       </div>
       <div class="gallery-watermark"><span>FlicksByNick</span></div>
@@ -371,11 +369,7 @@
 
     <div class="gallery-item" data-cat="othersports">
       <div class="gallery-item-inner">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-        </svg>
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/></svg>
         <span class="placeholder-label">Coming Soon</span>
       </div>
       <div class="gallery-watermark"><span>FlicksByNick</span></div>
@@ -384,24 +378,19 @@
 
     <div class="gallery-item" data-cat="othersports">
       <div class="gallery-item-inner">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-          <path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/>
-        </svg>
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="4" y="10" width="36" height="28" rx="2" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><circle cx="22" cy="24" r="7" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/><path d="M16 10l2-4h8l2 4" stroke="#F8F6F1" stroke-width="1" opacity="0.12"/></svg>
         <span class="placeholder-label">Coming Soon</span>
       </div>
       <div class="gallery-watermark"><span>FlicksByNick</span></div>
       <div class="gallery-sport-tag">Other Sports</div>
     </div>
 
-  </div><!-- /gallery-grid -->
+  </div>
 
-  <!-- Footer -->
   <footer class="site-footer">
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-4">
+    <div class="footer-inner">
       <div class="footer-brand"><span>Flicks</span>ByNick</div>
-      <div class="d-flex flex-column align-items-center gap-2">
+      <div class="footer-center">
         <span class="footer-email">nick@flicksbynick.com</span>
         <div>
           <a href="#" class="footer-social-btn">IG</a>
@@ -426,10 +415,9 @@
     <h1 class="section-title display-font">Contact</h1>
   </div>
 
-  <section style="padding: 0 64px 100px;">
-    <div class="row g-5" style="max-width:1100px;">
+  <section class="contact-body-section">
+    <div class="row g-5 contact-body-row">
 
-      <!-- Form -->
       <div class="col-lg-7">
         <form id="contactForm" novalidate>
           <div class="contact-form-field">
@@ -444,13 +432,12 @@
             <label for="contactMessage">Message</label>
             <textarea id="contactMessage" name="message" placeholder="Tell me about your event, team, or photo request..." required></textarea>
           </div>
-          <button type="submit" id="submitBtn" class="btn-gold-custom w-100 justify-content-center">
+          <button type="submit" id="submitBtn" class="btn-gold-custom btn-full">
             Submit Inquiry <i class="bi bi-arrow-right"></i>
           </button>
         </form>
       </div>
 
-      <!-- Info -->
       <div class="col-lg-5">
         <div class="info-row">
           <p class="info-label">Email</p>
@@ -464,18 +451,12 @@
           <p class="info-label">Coverage Areas</p>
           <p class="info-value">Football · Wrestling · Basketball · Track &amp; more</p>
         </div>
-        <div class="mt-4">
+        <div class="contact-socials-wrap">
           <span class="section-label">Follow the Work</span>
-          <div class="mt-2">
-            <a href="#" class="social-pill">
-              <i class="bi bi-instagram me-1"></i> Instagram
-            </a>
-            <a href="#" class="social-pill">
-              <i class="bi bi-twitter-x me-1"></i> Twitter
-            </a>
-            <a href="#" class="social-pill">
-              <i class="bi bi-facebook me-1"></i> Facebook
-            </a>
+          <div class="contact-socials">
+            <a href="#" class="social-pill"><i class="bi bi-instagram"></i> Instagram</a>
+            <a href="#" class="social-pill"><i class="bi bi-twitter-x"></i> Twitter</a>
+            <a href="#" class="social-pill"><i class="bi bi-facebook"></i> Facebook</a>
           </div>
         </div>
       </div>
@@ -483,11 +464,10 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="site-footer">
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-4">
+    <div class="footer-inner">
       <div class="footer-brand"><span>Flicks</span>ByNick</div>
-      <div class="d-flex flex-column align-items-center gap-2">
+      <div class="footer-center">
         <span class="footer-email">nick@flicksbynick.com</span>
         <div>
           <a href="#" class="footer-social-btn">IG</a>
@@ -502,137 +482,8 @@
 </div><!-- /page-contact -->
 
 
-<!-- ══════════════════════════════════════════════════════════
-     PAGE: MOBILE PREVIEW
-══════════════════════════════════════════════════════════ -->
-<div id="page-mobile" class="site-page">
-  <section class="mobile-preview-section">
-    <div class="text-center mb-5">
-      <span class="section-label">Responsive Design</span>
-      <h1 class="section-title display-font">
-        Mobile <span class="text-gold">Layout</span>
-      </h1>
-    </div>
 
-    <div class="mobile-frame-wrap d-flex justify-content-center gap-5 flex-wrap align-items-start">
-
-      <!-- Phone 1: Homepage View -->
-      <div>
-        <span class="phone-label">Homepage View</span>
-        <div class="phone-frame">
-          <div class="phone-notch"><div class="phone-notch-bar"></div></div>
-          <div class="m-nav-bar">
-            <div class="m-brand"><span>Flicks</span>ByNick</div>
-            <div class="m-hamburger"><span></span><span></span><span></span></div>
-          </div>
-          <div class="m-hero-wrap">
-            <img src="images/hero.jpeg" alt="" />
-            <div class="m-hero-overlay"></div>
-            <div class="m-hero-text">
-              <p class="m-eyebrow">Sports Photography</p>
-              <p class="m-title">Action Sports<br>Photography</p>
-              <span class="m-btn">View Galleries</span>
-            </div>
-          </div>
-          <div class="m-section" style="background: var(--dark);">
-            <p class="m-section-label">Featured Work</p>
-            <p class="m-section-title">Best Shots</p>
-            <div class="m-card"><img src="images/wrestling.jpeg" alt=""><span class="m-card-tag">Wrestling</span></div>
-            <div class="m-card"><img src="images/football-action.jpeg" alt=""><span class="m-card-tag">Football</span></div>
-            <div class="m-card"><img src="images/basketball.jpeg" alt=""><span class="m-card-tag">Basketball</span></div>
-          </div>
-          <div class="m-section" style="background: var(--black);">
-            <p class="m-section-label">About</p>
-            <p class="m-section-title">Nicholas Carmichael</p>
-            <div class="d-flex gap-2 align-items-center">
-              <div class="m-about-thumb">
-                <svg width="24" height="24" viewBox="0 0 52 52" fill="none">
-                  <circle cx="26" cy="22" r="10" stroke="#E8B84B" stroke-width="2" opacity="0.5"/>
-                  <path d="M10 40c0-8.837 7.163-16 16-16s16 7.163 16 16" stroke="#E8B84B" stroke-width="2" opacity="0.5"/>
-                </svg>
-              </div>
-              <div class="m-about-text">
-                <p>Capturing the raw emotion of high school sports across New Jersey.</p>
-                <span class="m-about-link">Learn More</span>
-              </div>
-            </div>
-          </div>
-          <div class="m-cta-bar">
-            <p class="m-cta-title">Book Event Coverage</p>
-            <p>Game day coverage &amp; tournaments.</p>
-            <span class="m-cta-btn">Contact Me</span>
-          </div>
-          <div class="m-footer">
-            <p class="m-footer-brand"><span>Flicks</span>ByNick</p>
-            <p>nick@flicksbynick.com</p>
-            <p style="margin-top:3px;">© 2024 FlicksByNick</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Phone 2: Nav Dropdown -->
-      <div>
-        <span class="phone-label">Menu Open State</span>
-        <div class="phone-frame" style="border-radius: 36px 36px 12px 12px;">
-          <div class="phone-notch"><div class="phone-notch-bar"></div></div>
-          <div class="m-nav-bar">
-            <div class="m-brand"><span>Flicks</span>ByNick</div>
-            <span style="font-size:1rem; color:var(--muted);">✕</span>
-          </div>
-          <div class="m-dropdown">
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#" style="color:var(--gold);">Galleries</a></li>
-              <li class="sub-link"><a href="#">Football</a></li>
-              <li class="sub-link"><a href="#">Wrestling</a></li>
-              <li class="sub-link"><a href="#">Basketball</a></li>
-              <li class="sub-link"><a href="#">Other</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-          <div class="m-hero-dim">
-            <img src="images/hero.jpeg" alt="" />
-            <div class="m-hero-overlay"></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-4">
-      <div class="footer-brand"><span>Flicks</span>ByNick</div>
-      <div class="d-flex flex-column align-items-center gap-2">
-        <span class="footer-email">nick@flicksbynick.com</span>
-        <div>
-          <a href="#" class="footer-social-btn">IG</a>
-          <a href="#" class="footer-social-btn">TW</a>
-          <a href="#" class="footer-social-btn">FB</a>
-        </div>
-      </div>
-      <span class="footer-copy">© 2024 FlicksByNick. All Rights Reserved.</span>
-    </div>
-  </footer>
-
-</div><!-- /page-mobile -->
-
-
-<!-- ══════════════════════════════════════════════════════════
-     PAGE SWITCHER (fixed bottom bar)
-══════════════════════════════════════════════════════════ -->
-<div id="pageSwitcher">
-  <button class="sw-btn active" onclick="showPage('home')">Home</button>
-  <button class="sw-btn"        onclick="showPage('about')">About</button>
-  <button class="sw-btn"        onclick="showPage('galleries')">Galleries</button>
-  <button class="sw-btn"        onclick="showPage('contact')">Contact</button>
-  <button class="sw-btn"        onclick="showPage('mobile')">Mobile</button>
-</div>
-
-
-<!-- Bootstrap 5 JS Bundle (includes Popper) -->
+<!-- Bootstrap 5 JS Bundle -->
 <script
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmzO2HnYmFJYdEFmSHNAn1ouvbS"
