@@ -197,6 +197,8 @@ a { text-decoration: none; color: inherit; }
 #mainNav .navbar-toggler {
   border: none;
   padding: 4px;
+  z-index: 1001;
+  position: relative;
 }
 
 #mainNav .navbar-toggler:focus { box-shadow: none; }
@@ -205,36 +207,28 @@ a { text-decoration: none; color: inherit; }
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28248,246,241,0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* Mobile menu styling */
-#mainNav .navbar-collapse {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: rgba(10, 10, 10, 0.98);
-  backdrop-filter: blur(5px);
-  border-bottom: 1px solid rgba(232, 184, 75, 0.15);
-  z-index: 1000;
-}
-
-#mainNav .navbar-nav {
-  flex-direction: column;
-  padding: 16px 0;
-}
-
-#mainNav .navbar-collapse .nav-link {
-  margin: 0;
-  padding: 12px 24px !important;
-  border-bottom: 1px solid rgba(232, 184, 75, 0.1);
-}
-
-#mainNav .navbar-collapse .nav-link::after {
-  display: none;
-}
-
-#mainNav .navbar-collapse .nav-link:hover,
-#mainNav .navbar-collapse .nav-link.active-link {
-  background: rgba(232, 184, 75, 0.1);
+/* Fix mobile navbar collapse visibility */
+@media (max-width: 991px) {
+  #mainNav .navbar-collapse {
+    justify-content: flex-start !important;
+    background: rgba(10, 10, 10, 0.98);
+    margin-top: 12px;
+    display: none !important;
+  }
+  
+  #mainNav .navbar-collapse.show {
+    display: block !important;
+  }
+  
+  #mainNav .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  #mainNav .nav-link {
+    margin: 0 !important;
+    padding: 12px 0 !important;
+  }
 }
 
 /* ── Hero ── */
@@ -1041,16 +1035,7 @@ a { text-decoration: none; color: inherit; }
 
 /* ── Responsive ── */
 @media (max-width: 991px) {
-  #mainNav { 
-    padding: 0 24px;
-    height: auto;
-  }
-
-  #mainNav .navbar-collapse {
-    position: static;
-    background: transparent;
-    border: none;
-  }
+  #mainNav { padding: 0 24px; }
 
   .hero-content { left: 24px; right: 24px; }
 
