@@ -144,7 +144,7 @@ a { text-decoration: none; color: inherit; }
   transition: background 0.3s, border-bottom 0.3s;
   border-bottom: 1px solid transparent;
   padding: 0 48px;
-  height: 72px;
+  min-height: 72px;
 }
 
 #mainNav.scrolled {

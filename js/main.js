@@ -27,12 +27,7 @@ function showPage(id) {
   // Scroll to top
   window.scrollTo({ top: 0, behavior: 'instant' });
 
-  // Close mobile nav if open
-  const navCollapse = document.getElementById('navbarNav');
-  if (navCollapse && navCollapse.classList.contains('show')) {
-    const toggler = document.querySelector('.navbar-toggler');
-    if (toggler) toggler.click();
-  }
+
 }
 
 /* ── Navbar scroll effect ── */
