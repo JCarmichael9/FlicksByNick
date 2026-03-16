@@ -530,6 +530,13 @@ a { text-decoration: none; color: inherit; }
   justify-content: center;
   gap: 14px;
   width: 100%;
+  overflow: hidden;
+}
+
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .portrait-placeholder span {
@@ -627,6 +634,18 @@ a { text-decoration: none; color: inherit; }
   cursor: pointer;
 }
 
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease-out, filter 0.35s ease-out;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.15);
+}
+
 .gallery-item-inner {
   width: 100%;
   height: 100%;
@@ -644,6 +663,12 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   justify-content: center;
   pointer-events: none;
+  opacity: 0.8;
+  transition: opacity 0.35s ease-out;
+}
+
+.gallery-item:hover .gallery-watermark {
+  opacity: 0.3;
 }
 
 .gallery-watermark span {
@@ -665,9 +690,13 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--gold);
+  transition: all 0.35s ease-out;
 }
 
-.gallery-item:hover .gallery-item-inner svg { opacity: 0.25; }
+.gallery-item:hover .gallery-sport-tag {
+  background: linear-gradient(to top, rgba(232,184,75,0.2) 0%, transparent 100%);
+  padding: 12px 12px;
+}
 
 .placeholder-label {
   font-size: 0.6rem;
@@ -1139,6 +1168,13 @@ a { text-decoration: none; color: inherit; }
   justify-content: center;
   gap: 14px;
   width: 100%;
+  overflow: hidden;
+}
+
+.about-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .about-img-placeholder span {
