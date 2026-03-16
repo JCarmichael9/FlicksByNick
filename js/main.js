@@ -63,6 +63,65 @@ function filterGallery(cat, clickedBtn) {
   });
 }
 
+/* ── Gallery Lightbox ── */
+let currentGalleryIndex = 0;
+let visibleGalleryImages = [];
+
+function openGalleryModal(imgElement) {
+  const modal = document.getElementById('galleryModal');
+  const modalImg = document.getElementById('galleryModalImage');
+  
+  // Get all visible gallery items
+  visibleGalleryImages = Array.from(document.querySelectorAll('.gallery-item')).filter(item => {
+    return item.style.display !== 'none';
+  });
+  
+  // Find the clicked image index
+  const clickedImg = imgElement.parentElement;
+  currentGalleryIndex = visibleGalleryImages.indexOf(clickedImg);
+  
+  // Set the modal image
+  modalImg.src = imgElement.src;
+  modal.style.display = 'flex';
+  updateGalleryCounter();
+  
+  // Prevent body scroll
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGalleryModal() {
+  const modal = document.getElementById('galleryModal');
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function nextGalleryImage() {
+  if (visibleGalleryImages.length === 0) return;
+  currentGalleryIndex = (currentGalleryIndex + 1) % visibleGalleryImages.length;
+  updateGalleryModalImage();
+}
+
+function prevGalleryImage() {
+  if (visibleGalleryImages.length === 0) return;
+  currentGalleryIndex = (currentGalleryIndex - 1 + visibleGalleryImages.length) % visibleGalleryImages.length;
+  updateGalleryModalImage();
+}
+
+function updateGalleryModalImage() {
+  const modal = document.getElementById('galleryModal');
+  const modalImg = document.getElementById('galleryModalImage');
+  const galleryItem = visibleGalleryImages[currentGalleryIndex];
+  const img = galleryItem.querySelector('img');
+  
+  modalImg.src = img.src;
+  updateGalleryCounter();
+}
+
+function updateGalleryCounter() {
+  document.getElementById('galleryImageCounter').textContent = currentGalleryIndex + 1;
+  document.getElementById('galleryImageTotal').textContent = visibleGalleryImages.length;
+}
+
 /* ── Contact Form ── */
 function handleContactSubmit(e) {
   e.preventDefault();
@@ -96,4 +155,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // Contact form
   const form = document.getElementById('contactForm');
   if (form) form.addEventListener('submit', handleContactSubmit);
+  
+  // Gallery lightbox - add click handlers to all gallery images
+  document.querySelectorAll('.gallery-item img').forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', function() {
+      openGalleryModal(this);
+    });
+  });
+  
+  // Keyboard navigation for gallery modal
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('galleryModal');
+    if (modal.style.display === 'flex') {
+      if (e.key === 'ArrowRight') nextGalleryImage();
+      if (e.key === 'ArrowLeft') prevGalleryImage();
+      if (e.key === 'Escape') closeGalleryModal();
+    }
+  });
+  
+  // Close modal on overlay click
+  document.querySelector('.gallery-modal-overlay').addEventListener('click', closeGalleryModal);
 });
