@@ -142,7 +142,6 @@ a { text-decoration: none; color: inherit; }
   background: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent);
   backdrop-filter: blur(2px);
   transition: background 0.3s, border-bottom 0.3s;
-  border-bottom: 1px solid transparent;
   padding: 0 48px;
   min-height: 72px;
 }
@@ -154,7 +153,7 @@ a { text-decoration: none; color: inherit; }
 
 #mainNav .navbar-brand {
   font-family: var(--font-display);
-  font-size: 1.75rem;
+  font-size: 2rem;
   letter-spacing: 0.08em;
   color: var(--white);
   line-height: 1;
@@ -163,7 +162,7 @@ a { text-decoration: none; color: inherit; }
 #mainNav .navbar-brand span { color: var(--gold); }
 
 #mainNav .nav-link {
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -210,14 +209,9 @@ a { text-decoration: none; color: inherit; }
 /* Fix mobile navbar collapse visibility */
 @media (max-width: 991px) {
   #mainNav .navbar-collapse {
-    justify-content: flex-start !important;
+    justify-content: flex-start;
     background: rgba(10, 10, 10, 0.98);
     margin-top: 12px;
-    display: none !important;
-  }
-  
-  #mainNav .navbar-collapse.show {
-    display: block !important;
   }
   
   #mainNav .navbar-nav {
@@ -1200,7 +1194,7 @@ a { text-decoration: none; color: inherit; }
 
 /* Contact socials block */
 .contact-socials-wrap { margin-top: 32px; }
-.contact-socials { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.contact-socials { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; justify-content: center; }
 
 /* Full-width button */
 .btn-full { width: 100%; justify-content: center; }

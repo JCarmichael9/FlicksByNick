@@ -24,10 +24,15 @@ function showPage(id) {
     if (link.dataset.page === id) link.classList.add('active-link');
   });
 
+  // Close navbar collapse on mobile
+  const navbarCollapse = document.getElementById('navbarNav');
+  if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    navbarToggler.click();
+  }
+
   // Scroll to top
   window.scrollTo({ top: 0, behavior: 'instant' });
-
-
 }
 
 /* ── Navbar scroll effect ── */
@@ -85,8 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Nav scroll listener
   window.addEventListener('scroll', handleNavScroll, { passive: true });
 
-  // Start on home page
-  showPage('home');
+  // Give Bootstrap a tick to initialize before touching the navbar
+  setTimeout(() => showPage('home'), 0);
 
   // Contact form
   const form = document.getElementById('contactForm');
