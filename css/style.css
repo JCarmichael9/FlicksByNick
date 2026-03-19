@@ -565,7 +565,7 @@ a { text-decoration: none; color: inherit; }
 
 .about-block h3 {
   font-family: var(--font-display);
-  font-size: 2.4rem;
+  font-size: 2.8rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -576,7 +576,7 @@ a { text-decoration: none; color: inherit; }
 .about-block p {
   color: rgba(248,246,241,0.65);
   line-height: 1.9;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   margin-bottom: 14px;
 }
 
@@ -861,7 +861,6 @@ a { text-decoration: none; color: inherit; }
   }
 }
 
-/* ── Contact ── */
 .contact-header { padding: 160px 64px 60px; }
 
 .contact-form-field { margin-bottom: 24px; }
@@ -1270,7 +1269,7 @@ a { text-decoration: none; color: inherit; }
   padding: 80px 64px 90px;
 }
 
-.about-body-row { max-width: 1200px; }
+.about-body-row { width: 100%; }
 
 /* Contact body section */
 .contact-body-section { padding: 0 64px 100px; }
