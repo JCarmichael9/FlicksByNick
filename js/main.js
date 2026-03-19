@@ -164,6 +164,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
+  // Fade-in animation for gallery items on scroll
+  // Triggers when 25% of the image is visible in viewport
+  const galleryObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+        galleryObserver.unobserve(entry.target); // Only animate once per image
+      }
+    });
+  }, { threshold: 0.25 });
+  
+  // Initially set all items to opacity 0, then observe them
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    galleryObserver.observe(item);
+  });
+  
   // Keyboard navigation for gallery modal
   document.addEventListener('keydown', (e) => {
     const modal = document.getElementById('galleryModal');
