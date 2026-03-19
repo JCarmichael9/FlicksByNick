@@ -31,8 +31,28 @@ function showPage(id) {
     navbarToggler.click();
   }
 
+  // Reset gallery animations when navigating to galleries page
+  if (id === 'galleries') {
+    resetGalleryAnimations();
+  }
+
   // Scroll to top
   window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+/* ── Reset Gallery Animations ── */
+function resetGalleryAnimations() {
+  // Reset all gallery items
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    // Remove animation class
+    item.classList.remove('fade-in');
+    // Reset opacity
+    item.style.opacity = '0';
+    // Re-observe the item
+    if (galleryObserverInstance) {
+      galleryObserverInstance.observe(item);
+    }
+  });
 }
 
 /* ── Navbar scroll effect ── */
