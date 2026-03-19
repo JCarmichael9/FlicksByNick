@@ -47,16 +47,25 @@ function handleNavScroll() {
 }
 
 /* ── Gallery Filter ── */
+let galleryObserverInstance; // Global reference for observer
+
 function filterGallery(cat, clickedBtn) {
   // Update active button
   document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
   clickedBtn.classList.add('active');
 
-  // Show/hide items
+  // Show/hide items and reset animations
   document.querySelectorAll('.gallery-item').forEach(item => {
     const itemCat = item.dataset.cat;
     if (cat === 'all' || itemCat === cat) {
       item.style.display = '';
+      // Reset animation for items coming into view
+      item.classList.remove('fade-in');
+      item.style.opacity = '0';
+      // Re-observe so they animate when scrolled into view
+      if (galleryObserverInstance) {
+        galleryObserverInstance.observe(item);
+      }
     } else {
       item.style.display = 'none';
     }
@@ -166,18 +175,18 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Fade-in animation for gallery items on scroll
   // Triggers when 25% of the image is visible in viewport
-  const galleryObserver = new IntersectionObserver((entries) => {
+  galleryObserverInstance = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('fade-in');
-        galleryObserver.unobserve(entry.target); // Only animate once per image
+        galleryObserverInstance.unobserve(entry.target); // Only animate once per view
       }
     });
   }, { threshold: 0.25 });
   
   // Initially set all items to opacity 0, then observe them
   document.querySelectorAll('.gallery-item').forEach(item => {
-    galleryObserver.observe(item);
+    galleryObserverInstance.observe(item);
   });
   
   // Keyboard navigation for gallery modal

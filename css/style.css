@@ -142,7 +142,7 @@ a { text-decoration: none; color: inherit; }
   background: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent);
   backdrop-filter: blur(2px);
   transition: background 0.3s, border-bottom 0.3s;
-  padding: 0 48px;
+  padding: 0 64px;
   min-height: 72px;
 }
 
@@ -1256,7 +1256,7 @@ a { text-decoration: none; color: inherit; }
 /* ── Utility classes to replace inline styles ── */
 
 /* Navbar container */
-.nav-container { padding: 0 48px; }
+.nav-container { padding: 0 64px; }
 
 /* About preview row */
 .about-preview-row { max-width: 1200px; }
@@ -1298,7 +1298,7 @@ a { text-decoration: none; color: inherit; }
 /* ── New utility classes (replacing former inline styles) ── */
 
 /* Navbar container padding */
-.nav-container { padding: 0 48px; }
+.nav-container { padding: 0 0px; }
 
 /* Featured section header row */
 .featured-header {
