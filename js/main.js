@@ -151,6 +151,24 @@ function updateGalleryCounter() {
   document.getElementById('galleryImageTotal').textContent = visibleGalleryImages.length;
 }
 
+/* ── Scroll to Top ── */
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function handleGalleryScroll() {
+  const btn = document.getElementById('scrollToTopBtn');
+  if (!btn) return;
+  
+  if (document.getElementById('page-galleries').classList.contains('active')) {
+    if (window.scrollY > 300) {
+      btn.style.display = 'flex';
+    } else {
+      btn.style.display = 'none';
+    }
+  }
+}
+
 /* ── Contact Form ── */
 function handleContactSubmit(e) {
   e.preventDefault();
@@ -221,4 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Close modal on overlay click
   document.querySelector('.gallery-modal-overlay').addEventListener('click', closeGalleryModal);
+  
+  // Gallery scroll to top button
+  window.addEventListener('scroll', handleGalleryScroll, { passive: true });
 });

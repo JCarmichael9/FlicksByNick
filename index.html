@@ -239,12 +239,12 @@
           <h3><span>Background</span></h3>
           <p>Nicholas Carmichael is a New Jersey-based sports photographer who has been documenting local athletic excellence since his early years in middle school. What started as a passion project with a borrowed camera has grown into a recognized portfolio spanning football, wrestling, basketball, and more.</p>
           <p>His work has been featured in school publications and across social platforms where athletes and families connect with the moments that define their seasons.</p>
-           </div>
+        </div>
         <div class="about-block">
           <h3>What <span>Inspires</span> the Work</h3>
           <p>At the heart of every great sports photograph is a story that could never be planned — the exhaustion in an athlete's eyes after a grueling match, the silent conversation between teammates on the bench, the split-second of peak action that defines an entire season.</p>
           <p>Nicholas is driven by the belief that high school and amateur athletes deserve the same quality of coverage as the professionals. These are the moments that shape young people's lives, and they deserve to be preserved with clarity, artistry, and care.</p>
-         </div>
+        </div>
       </div>
     </div>
   </section>
@@ -462,6 +462,12 @@
 
   </div>
 
+  <div class="gallery-scroll-to-top">
+    <button id="scrollToTopBtn" class="scroll-to-top-btn" onclick="scrollToTop()" style="display: none;">
+      <i class="bi bi-chevron-up"></i>
+    </button>
+  </div>
+
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand"><span>Flicks</span>ByNick</div>
@@ -485,8 +491,16 @@
       <button class="gallery-modal-prev" onclick="prevGalleryImage()">❮</button>
       <img id="galleryModalImage" src="" alt="" class="gallery-modal-image" />
       <button class="gallery-modal-next" onclick="nextGalleryImage()">❯</button>
-      <div class="gallery-modal-counter">
-        <span id="galleryImageCounter">1</span> / <span id="galleryImageTotal">27</span>
+      <div class="gallery-modal-bottom">
+        <div class="gallery-modal-description">
+          <p id="galleryModalDesc" class="modal-desc-text">Click to view more details</p>
+          <a id="galleryDownloadBtn" href="#" class="gallery-download-btn" download>
+            <i class="bi bi-download"></i> Download
+          </a>
+        </div>
+        <div class="gallery-modal-counter">
+          <span id="galleryImageCounter">1</span> / <span id="galleryImageTotal">27</span>
+        </div>
       </div>
     </div>
   </div>
@@ -538,7 +552,7 @@
         </div>
         <div class="info-row">
           <p class="info-label">Coverage Areas</p>
-          <p class="info-value">Football · Wrestling · Basketball · Track &amp; more</p>
+          <p class="info-value">Football • Wrestling • Basketball • Track & more</p>
         </div>
         <div class="contact-socials-wrap">
           <span class="section-label">Follow the Work</span>
