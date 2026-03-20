@@ -152,107 +152,25 @@ function updateGalleryCounter() {
 }
 
 /* ── Contact Form ── */
-const BACKEND_URL = 'http://localhost:3000'; // Change if backend is on different domain
-
-async function handleContactSubmit(e) {
+function handleContactSubmit(e) {
   e.preventDefault();
-  
-  const form = document.getElementById('contactForm');
   const btn = document.getElementById('submitBtn');
-  const originalText = btn.innerHTML;
-  
-  // Get form data
-  const formData = {
-    name: document.getElementById('contactName').value.trim(),
-    email: document.getElementById('contactEmail').value.trim(),
-    message: document.getElementById('contactMessage').value.trim()
-  };
-  
-  // Validate required fields
-  if (!formData.name || !formData.email || !formData.message) {
-    showFormMessage('Please fill out all fields', 'error');
-    return;
-  }
-  
-  // Update button
+  const originalText = btn.textContent;
+
+  // Simulate send
   btn.textContent = 'Sending...';
   btn.disabled = true;
-  
-  try {
-    // Send email via backend
-    const response = await fetch(`${BACKEND_URL}/api/send-email`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData)
-    });
-    
-    const data = await response.json();
-    
-    if (response.ok && data.success) {
-      // Success
-      btn.innerHTML = 'Message Sent ✓';
-      btn.style.background = '#2a7a2a';
-      showFormMessage(data.message, 'success');
-      form.reset();
-      
-      // Reset button after delay
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.style.background = '';
-        btn.disabled = false;
-      }, 3000);
-    } else {
-      // Server returned error
-      throw new Error(data.message || 'Failed to send email');
-    }
-  } catch (error) {
-    // Network or parsing error
-    console.error('Form submission error:', error);
-    
-    let errorMessage = 'Unable to send message. ';
-    if (error.message.includes('Failed to fetch')) {
-      errorMessage += 'Is the server running? (npm start)';
-    } else {
-      errorMessage += error.message;
-    }
-    
-    showFormMessage(errorMessage, 'error');
-    
-    // Reset button
-    btn.innerHTML = originalText;
-    btn.disabled = false;
-  }
-}
 
-function showFormMessage(message, type) {
-  // Remove existing message if present
-  const existingMessage = document.getElementById('formMessage');
-  if (existingMessage) existingMessage.remove();
-  
-  // Create message element
-  const messageEl = document.createElement('div');
-  messageEl.id = 'formMessage';
-  messageEl.style.cssText = `
-    padding: 12px 16px;
-    margin: 15px 0;
-    border-radius: 6px;
-    font-size: 14px;
-    border-left: 4px solid ${type === 'success' ? '#2a7a2a' : '#d32f2f'};
-    background-color: ${type === 'success' ? '#e8f5e9' : '#ffebee'};
-    color: ${type === 'success' ? '#1b5e20' : '#b71c1c'};
-  `;
-  messageEl.textContent = message;
-  
-  // Insert before the form or as first child if no form
-  const form = document.getElementById('contactForm');
-  form.parentElement.insertBefore(messageEl, form);
-  
-  // Auto-remove success messages after 5 seconds
-  if (type === 'success') {
-    setTimeout(() => messageEl.remove(), 5000);
-  }
+  setTimeout(() => {
+    btn.textContent = 'Message Sent ✓';
+    btn.style.background = '#2a7a2a';
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.background = '';
+      btn.disabled = false;
+      document.getElementById('contactForm').reset();
+    }, 2500);
+  }, 1200);
 }
 
 /* ── Init ── */
