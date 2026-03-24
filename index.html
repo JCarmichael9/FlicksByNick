@@ -195,60 +195,85 @@
 
 </div><!-- /page-home -->
 
-
 <!-- ══════════════════════════════════════════════════════════
-     PAGE: ABOUT
+     PAGE: ABOUT  (replace the entire #page-about div with this)
 ══════════════════════════════════════════════════════════ -->
 <div id="page-about" class="site-page">
 
-  <div class="about-hero">
-    <img class="about-hero-bg" src="images/football7.jpeg" alt="" />
-    <div class="about-hero-content">
-      <span class="section-label">The Photographer</span>
-      <h1 class="about-hero-title">
-        About<br>
-        <span class="text-gold">Nicholas</span><br>
-        Carmichael
-      </h1>
+  <!-- Full-page hero with everything on top -->
+  <div class="about-full-hero">
+    <!-- Background image -->
+    <img class="about-full-hero-bg" src="images/football7.jpeg" alt="" />
+    <div class="about-full-hero-overlay"></div>
+
+    <!-- Content sits above the overlay -->
+    <div class="about-full-hero-content">
+
+      <!-- Top label -->
+      <div class="about-top-label">
+        <span class="section-label">The Photographer</span>
+      </div>
+
+      <!-- Two-column layout: photo left, text right -->
+      <div class="about-two-col">
+
+        <!-- LEFT: Portrait + stats -->
+        <div class="about-left-col">
+          <div class="about-portrait-wrap">
+            <img src="images/nicholas.jpeg" alt="Nicholas Carmichael" class="about-portrait-photo" />
+          </div>
+          <div class="about-stats-row">
+            <div class="about-stat">
+              <div class="stat-num">2</div>
+              <div class="stat-label">Years Shooting</div>
+            </div>
+            <div class="about-stat">
+              <div class="stat-num">5</div>
+              <div class="stat-label">Sports Covered</div>
+            </div>
+            <div class="about-stat">
+              <div class="stat-num">50+</div>
+              <div class="stat-label">Events Shot</div>
+            </div>
+          </div>
+          <a href="#" class="btn-gold-custom about-left-btn" onclick="showPage('contact'); return false;">
+            Work With Me <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- RIGHT: All text content -->
+        <div class="about-right-col">
+
+          <h1 class="about-main-title">
+            About<br>
+            <span class="text-gold">Nicholas</span><br>
+            Carmichael
+          </h1>
+
+          <div class="about-text-block">
+            <h3 class="about-block-heading"><span>Background</span></h3>
+            <p>Nicholas Carmichael is a New Jersey-based sports photographer who has been documenting local athletic excellence since his early years in middle school. What started as a passion project with a borrowed camera has grown into a recognized portfolio spanning football, wrestling, basketball, and more.</p>
+            <p>His work has been featured in school publications and across social platforms where athletes and families connect with the moments that define their seasons.</p>
+          </div>
+
+          <div class="about-text-block">
+            <h3 class="about-block-heading">What <span>Inspires</span> the Work</h3>
+            <p>At the heart of every great sports photograph is a story that could never be planned — the exhaustion in an athlete's eyes after a grueling match, the silent conversation between teammates on the bench, the split-second of peak action that defines an entire season.</p>
+            <p>Nicholas is driven by the belief that high school and amateur athletes deserve the same quality of coverage as the professionals. These are the moments that shape young people's lives, and they deserve to be preserved with clarity, artistry, and care.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="about-hero-scroll">
+      <div class="about-hero-scroll-line"></div>
+      <span class="about-hero-scroll-text">Scroll</span>
     </div>
   </div>
 
-  <section class="about-body-section">
-    <div class="row g-5 about-body-row">
-      <div class="col-lg-4">
-        <div class="portrait-placeholder">
-          <img src="images/nicholas.jpeg" alt="Nicholas Carmichael" class="portrait-img" />
-        </div>
-        <div class="stat-divider d-flex gap-4 flex-wrap">
-          <div>
-            <div class="stat-num">2</div>
-            <div class="stat-label">Years Shooting</div>
-          </div>
-          <div>
-            <div class="stat-num">5</div>
-            <div class="stat-label">Sports Covered</div>
-          </div>
-          <div>
-            <div class="stat-num">50+</div>
-            <div class="stat-label">Events Shot</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-8">
-        <div class="about-block">
-          <h3><span>Background</span></h3>
-          <p>Nicholas Carmichael is a New Jersey-based sports photographer who has been documenting local athletic excellence since his early years in middle school. What started as a passion project with a borrowed camera has grown into a recognized portfolio spanning football, wrestling, basketball, and more.</p>
-          <p>His work has been featured in school publications and across social platforms where athletes and families connect with the moments that define their seasons.</p>
-        </div>
-        <div class="about-block">
-          <h3>What <span>Inspires</span> the Work</h3>
-          <p>At the heart of every great sports photograph is a story that could never be planned — the exhaustion in an athlete's eyes after a grueling match, the silent conversation between teammates on the bench, the split-second of peak action that defines an entire season.</p>
-          <p>Nicholas is driven by the belief that high school and amateur athletes deserve the same quality of coverage as the professionals. These are the moments that shape young people's lives, and they deserve to be preserved with clarity, artistry, and care.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <!-- CTA Strip -->
   <section class="cta-strip">
     <span class="section-label cta-label-dark">Let's Work Together</span>
     <h2 class="section-title display-font">Ready to Cover<br>Your Team?</h2>
@@ -274,8 +299,6 @@
   </footer>
 
 </div><!-- /page-about -->
-
-
 <!-- ══════════════════════════════════════════════════════════
      PAGE: GALLERIES
 ══════════════════════════════════════════════════════════ -->
@@ -506,10 +529,8 @@
   </div>
 
 </div><!-- /page-galleries -->
-
-
 <!-- ══════════════════════════════════════════════════════════
-     PAGE: CONTACT
+     PAGE: CONTACT  (replace the entire #page-contact div with this)
 ══════════════════════════════════════════════════════════ -->
 <div id="page-contact" class="site-page">
 
@@ -552,7 +573,7 @@
         </div>
         <div class="info-row">
           <p class="info-label">Coverage Areas</p>
-          <p class="info-value">Football • Wrestling • Basketball • Track & more</p>
+          <p class="info-value">Football • Wrestling • Basketball • Track &amp; more</p>
         </div>
         <div class="contact-socials-wrap">
           <span class="section-label">Follow the Work</span>
@@ -583,8 +604,6 @@
   </footer>
 
 </div><!-- /page-contact -->
-
-
 
 <!-- Bootstrap 5 JS Bundle -->
   <!-- Bootstrap JavaScript Libraries -->

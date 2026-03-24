@@ -1524,3 +1524,278 @@ a { text-decoration: none; color: inherit; }
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
+
+/* ══════════════════════════════════════════════════════════
+   ABOUT PAGE — Full Hero Layout
+   Add these styles to your style.css (replace all old about-page rules)
+══════════════════════════════════════════════════════════ */
+
+/* Remove old conflicting about-body-section display:none */
+.about-body-section {
+  display: block !important;
+}
+
+/* ── Full-page hero container ── */
+.about-full-hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 110px 64px 80px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Background image */
+.about-full-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  z-index: 0;
+}
+
+/* Dark overlay so text is readable */
+.about-full-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.88) 100%);
+  z-index: 1;
+}
+
+/* Everything sits above the overlay */
+.about-full-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+/* Top label row */
+.about-top-label {
+  margin-bottom: 36px;
+}
+
+/* ── Two-column layout ── */
+.about-two-col {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* ── LEFT column ── */
+.about-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Portrait frame with gold border accent */
+.about-portrait-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.about-portrait-wrap::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: -12px;
+  bottom: -12px;
+  border: 2px solid var(--gold);
+  z-index: 0;
+}
+
+.about-portrait-photo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  border: 1px solid rgba(232,184,75,0.2);
+}
+
+/* Stats row below photo */
+.about-stats-row {
+  display: flex;
+  gap: 0;
+  margin-top: 40px;
+  border-top: 1px solid rgba(248,246,241,0.1);
+  padding-top: 28px;
+}
+
+.about-stat {
+  flex: 1;
+  padding-right: 16px;
+}
+
+.about-stat:not(:last-child) {
+  border-right: 1px solid rgba(248,246,241,0.08);
+  margin-right: 16px;
+}
+
+/* Button below stats in left column */
+.about-left-btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+/* ── RIGHT column ── */
+.about-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 4px;
+}
+
+/* Main title */
+.about-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  margin-bottom: 40px;
+}
+
+/* Text blocks */
+.about-text-block {
+  margin-bottom: 32px;
+}
+
+.about-block-heading {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.about-block-heading span {
+  color: var(--gold);
+}
+
+.about-text-block p {
+  color: rgba(248,246,241,0.65);
+  line-height: 1.85;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 991px) {
+  .about-full-hero {
+    padding: 100px 24px 60px;
+  }
+
+  .about-two-col {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-portrait-wrap::before {
+    display: none;
+  }
+
+  .about-portrait-photo {
+    aspect-ratio: 4 / 3;
+    max-height: 360px;
+    width: 100%;
+    object-position: center top;
+  }
+
+  .about-stats-row {
+    margin-top: 28px;
+  }
+
+  .about-main-title {
+    font-size: clamp(2.4rem, 8vw, 3.5rem);
+    margin-bottom: 28px;
+  }
+}
+
+@media (max-width: 575px) {
+  .about-full-hero {
+    padding: 90px 20px 50px;
+  }
+
+  .about-stats-row {
+    gap: 0;
+  }
+
+  .about-two-col {
+    gap: 32px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   CONTACT PAGE — Wider Layout
+══════════════════════════════════════════════════════════ */
+
+#page-contact .contact-header {
+  padding: 140px 64px 48px;
+}
+
+#page-contact .contact-body-section {
+  padding: 0 64px 100px;
+}
+
+#page-contact .contact-body-row {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 991px) {
+  #page-contact .contact-header {
+    padding: 120px 24px 40px;
+  }
+  #page-contact .contact-body-section {
+    padding: 0 24px 60px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   ABOUT PAGE — Hero Scroll Indicator
+══════════════════════════════════════════════════════════ */
+
+.about-hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+  animation: aboutBounce 2s infinite;
+}
+
+@keyframes aboutBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+.about-hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+.about-hero-scroll-text {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
