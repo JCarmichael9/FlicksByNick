@@ -1,0 +1,181 @@
+[
+  {
+    "src": "images/football1.jpeg",
+    "alt": "Football action",
+    "category": "football",
+    "sportTag": "Football",
+    "title": "Breakthrough Play"
+  },
+  {
+    "src": "images/football2.jpeg",
+    "alt": "Football action",
+    "category": "football",
+    "sportTag": "Football"
+  },
+  {
+    "src": "images/football3.jpeg",
+    "alt": "Football action",
+    "category": "football",
+    "sportTag": "Football"
+  },
+  {
+    "src": "images/football4.jpeg",
+    "alt": "Football action",
+    "category": "football",
+    "sportTag": "Football"
+  },
+  {
+    "src": "images/football5.jpeg",
+    "alt": "Football action",
+    "category": "football",
+    "sportTag": "Football"
+  },
+  {
+    "src": "images/football6.jpeg",
+    "alt": "Football action",
+    "category": "football",
+    "sportTag": "Football"
+  },
+  {
+    "src": "images/football7.jpeg",
+    "alt": "Football action",
+    "category": "football",
+    "sportTag": "Football"
+  },
+  {
+    "src": "images/football8.jpeg",
+    "alt": "Football action",
+    "category": "football",
+    "sportTag": "Football",
+    "title": "AURA"
+  },
+  {
+    "src": "images/football9.jpeg",
+    "alt": "Football action",
+    "category": "football",
+    "sportTag": "Football"
+  },
+  {
+    "src": "images/wrestling.jpeg",
+    "alt": "Wrestling match",
+    "category": "wrestling",
+    "sportTag": "Wrestling",
+    "title": "Eyes of a Champion"
+  },
+  {
+    "src": "images/wrestling1.jpeg",
+    "alt": "Wrestling match",
+    "category": "wrestling",
+    "sportTag": "Wrestling"
+  },
+  {
+    "src": "images/wrestling2.jpeg",
+    "alt": "Wrestling match",
+    "category": "wrestling",
+    "sportTag": "Wrestling"
+  },
+  {
+    "src": "images/wrestling3.jpeg",
+    "alt": "Wrestling match",
+    "category": "wrestling",
+    "sportTag": "Wrestling",
+    "description": "Mid-throw moment capturing the power and athleticism of the sport"
+  },
+  {
+    "src": "images/wrestling4.jpeg",
+    "alt": "Wrestling match",
+    "category": "wrestling",
+    "sportTag": "Wrestling",
+    "description": "Wrestler defending against submission hold showing resilience and control"
+  },
+  {
+    "src": "images/wrestling5.jpeg",
+    "alt": "Wrestling match",
+    "category": "wrestling",
+    "sportTag": "Wrestling",
+    "description": "Victory moment as wrestler stands triumphant in the center of the mat"
+  },
+  {
+    "src": "images/wrestling6.jpeg",
+    "alt": "Wrestling match",
+    "category": "wrestling",
+    "sportTag": "Wrestling",
+    "description": "Close contact action showing the intensity of competitive wrestling"
+  },
+  {
+    "src": "images/wrestling7.jpeg",
+    "alt": "Wrestling match",
+    "category": "wrestling",
+    "sportTag": "Wrestling",
+    "description": "Referee monitoring the action as wrestlers battle for position"
+  },
+  {
+    "src": "images/wrestling8.jpeg",
+    "alt": "Wrestling match",
+    "category": "wrestling",
+    "sportTag": "Wrestling",
+    "description": "Wrestler executing a counter-move with precision and strength"
+  },
+  {
+    "src": "images/wrestling9.jpeg",
+    "alt": "Wrestling match",
+    "category": "wrestling",
+    "sportTag": "Wrestling",
+    "description": "End of match moment showing exhaustion and competitive spirit"
+  },
+  {
+    "src": "images/basketball1.jpeg",
+    "alt": "Basketball action",
+    "category": "othersports",
+    "sportTag": "Other Sports",
+    "description": "Basketball player going up for a contested three-point shot"
+  },
+  {
+    "src": "images/basketball2.jpeg",
+    "alt": "Basketball action",
+    "category": "othersports",
+    "sportTag": "Other Sports",
+    "description": "Point guard driving to the basket through traffic"
+  },
+  {
+    "src": "images/basketball3.jpeg",
+    "alt": "Basketball action",
+    "category": "othersports",
+    "sportTag": "Other Sports",
+    "description": "Center battling for position under the rim"
+  },
+  {
+    "src": "images/basketball4.jpeg",
+    "alt": "Basketball action",
+    "category": "othersports",
+    "sportTag": "Other Sports",
+    "description": "Defensive player applying pressure on the ball handler"
+  },
+  {
+    "src": "images/basketball5.jpeg",
+    "alt": "Basketball action",
+    "category": "othersports",
+    "sportTag": "Other Sports",
+    "description": "Fast break moment with players racing down the court"
+  },
+  {
+    "src": "images/basketball6.jpeg",
+    "alt": "Basketball action",
+    "category": "othersports",
+    "sportTag": "Other Sports",
+    "description": "Slam dunk during intense competition capturing peak athleticism"
+  },
+  {
+    "src": "images/basketball7.jpeg",
+    "alt": "Basketball action",
+    "category": "othersports",
+    "sportTag": "Other Sports"
+  },
+  {
+    "src": "images/basketball8.jpeg",
+    "alt": "Basketball action",
+    "category": "othersports",
+    "sportTag": "Other Sports",
+    "title": "The Release"
+  }
+]

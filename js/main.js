@@ -6,49 +6,100 @@
 const PAGES = ['home', 'about', 'galleries', 'contact'];
 
 function showPage(id) {
-  // Hide all pages
   document.querySelectorAll('.site-page').forEach(p => p.classList.remove('active'));
 
-  // Show target page
   const target = document.getElementById('page-' + id);
   if (target) target.classList.add('active');
 
-  // Update switcher buttons
   document.querySelectorAll('.sw-btn').forEach((btn, i) => {
     btn.classList.toggle('active', PAGES[i] === id);
   });
 
-  // Update nav link highlights
   document.querySelectorAll('#mainNav .nav-link').forEach(link => {
     link.classList.remove('active-link');
     if (link.dataset.page === id) link.classList.add('active-link');
   });
 
-  // Close navbar collapse on mobile
   const navbarCollapse = document.getElementById('navbarNav');
   if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-    const navbarToggler = document.querySelector('.navbar-toggler');
-    navbarToggler.click();
+    document.querySelector('.navbar-toggler').click();
   }
 
-  // Reset gallery animations when navigating to galleries page
   if (id === 'galleries') {
     resetGalleryAnimations();
   }
 
-  // Scroll to top
   window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+/* ── Build Gallery from JSON ── */
+function buildGalleryItem(photo) {
+  const div = document.createElement('div');
+  div.className = 'gallery-item';
+  div.dataset.cat = photo.category;
+  if (photo.description) div.dataset.desc = photo.description;
+
+  const img = document.createElement('img');
+  img.src = photo.src;
+  img.alt = photo.alt || '';
+  img.style.cursor = 'pointer';
+
+  const watermark = document.createElement('div');
+  watermark.className = 'gallery-watermark';
+  watermark.innerHTML = '<span>FlicksByNick</span>';
+
+  const tag = document.createElement('div');
+  tag.className = 'gallery-sport-tag';
+  tag.textContent = photo.sportTag || '';
+
+  div.appendChild(img);
+  div.appendChild(watermark);
+  div.appendChild(tag);
+
+  img.addEventListener('click', function () {
+    openGalleryModal(this);
+  });
+
+  return div;
+}
+
+async function loadGallery() {
+  const grid = document.getElementById('galleryGrid');
+  if (!grid) return;
+
+  try {
+    const res = await fetch('gallery-data.json');
+    if (!res.ok) throw new Error('Failed to load gallery-data.json');
+    const photos = await res.json();
+
+    grid.innerHTML = '';
+
+    photos.forEach(photo => {
+      const item = buildGalleryItem(photo);
+      grid.appendChild(item);
+    });
+
+    // Re-attach intersection observer to new items
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.style.opacity = '0';
+      galleryObserverInstance.observe(item);
+    });
+
+    // Update modal total count
+    const totalEl = document.getElementById('galleryImageTotal');
+    if (totalEl) totalEl.textContent = photos.length;
+
+  } catch (err) {
+    console.error('Gallery load error:', err);
+    grid.innerHTML = '<p style="color:var(--muted);padding:40px;text-align:center;">Unable to load gallery. Make sure gallery-data.json is in the same folder.</p>';
+  }
 }
 
 /* ── Reset Gallery Animations ── */
 function resetGalleryAnimations() {
-  // Reset all gallery items
   document.querySelectorAll('.gallery-item').forEach(item => {
-    // Remove animation class
     item.classList.remove('fade-in');
-    // Reset opacity
     item.style.opacity = '0';
-    // Re-observe the item
     if (galleryObserverInstance) {
       galleryObserverInstance.observe(item);
     }
@@ -59,35 +110,23 @@ function resetGalleryAnimations() {
 function handleNavScroll() {
   const nav = document.getElementById('mainNav');
   if (!nav) return;
-  if (window.scrollY > 60) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
-  }
+  nav.classList.toggle('scrolled', window.scrollY > 60);
 }
 
 /* ── Gallery Filter ── */
-let galleryObserverInstance; // Global reference for observer
+let galleryObserverInstance;
 
 function filterGallery(cat, clickedBtn) {
-  // Update active button
   document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
   clickedBtn.classList.add('active');
 
-  // Show/hide items and reset animations
   document.querySelectorAll('.gallery-item').forEach(item => {
-    const itemCat = item.dataset.cat;
-    if (cat === 'all' || itemCat === cat) {
-      item.style.display = '';
-      // Reset animation for items coming into view
+    const match = cat === 'all' || item.dataset.cat === cat;
+    item.style.display = match ? '' : 'none';
+    if (match) {
       item.classList.remove('fade-in');
       item.style.opacity = '0';
-      // Re-observe so they animate when scrolled into view
-      if (galleryObserverInstance) {
-        galleryObserverInstance.observe(item);
-      }
-    } else {
-      item.style.display = 'none';
+      if (galleryObserverInstance) galleryObserverInstance.observe(item);
     }
   });
 }
@@ -99,49 +138,42 @@ let visibleGalleryImages = [];
 function openGalleryModal(imgElement) {
   const modal = document.getElementById('galleryModal');
   const modalImg = document.getElementById('galleryModalImage');
-  
-  // Get all visible gallery items
+
   visibleGalleryImages = Array.from(document.querySelectorAll('.gallery-item')).filter(item => {
     return item.style.display !== 'none';
   });
-  
-  // Find the clicked image index
-  const clickedImg = imgElement.parentElement;
-  currentGalleryIndex = visibleGalleryImages.indexOf(clickedImg);
-  
-  // Set the modal image
+
+  const clickedItem = imgElement.parentElement;
+  currentGalleryIndex = visibleGalleryImages.indexOf(clickedItem);
+
   modalImg.src = imgElement.src;
   modal.style.display = 'flex';
   updateGalleryCounter();
-  
-  // Prevent body scroll
+
   document.body.style.overflow = 'hidden';
 }
 
 function closeGalleryModal() {
-  const modal = document.getElementById('galleryModal');
-  modal.style.display = 'none';
+  document.getElementById('galleryModal').style.display = 'none';
   document.body.style.overflow = '';
 }
 
 function nextGalleryImage() {
-  if (visibleGalleryImages.length === 0) return;
+  if (!visibleGalleryImages.length) return;
   currentGalleryIndex = (currentGalleryIndex + 1) % visibleGalleryImages.length;
   updateGalleryModalImage();
 }
 
 function prevGalleryImage() {
-  if (visibleGalleryImages.length === 0) return;
+  if (!visibleGalleryImages.length) return;
   currentGalleryIndex = (currentGalleryIndex - 1 + visibleGalleryImages.length) % visibleGalleryImages.length;
   updateGalleryModalImage();
 }
 
 function updateGalleryModalImage() {
-  const modal = document.getElementById('galleryModal');
   const modalImg = document.getElementById('galleryModalImage');
   const galleryItem = visibleGalleryImages[currentGalleryIndex];
   const img = galleryItem.querySelector('img');
-  
   modalImg.src = img.src;
   updateGalleryCounter();
 }
@@ -159,13 +191,8 @@ function scrollToTop() {
 function handleGalleryScroll() {
   const btn = document.getElementById('scrollToTopBtn');
   if (!btn) return;
-  
   if (document.getElementById('page-galleries').classList.contains('active')) {
-    if (window.scrollY > 300) {
-      btn.style.display = 'flex';
-    } else {
-      btn.style.display = 'none';
-    }
+    btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
   }
 }
 
@@ -175,7 +202,6 @@ function handleContactSubmit(e) {
   const btn = document.getElementById('submitBtn');
   const originalText = btn.textContent;
 
-  // Simulate send
   btn.textContent = 'Sending...';
   btn.disabled = true;
 
@@ -193,41 +219,26 @@ function handleContactSubmit(e) {
 
 /* ── Init ── */
 document.addEventListener('DOMContentLoaded', () => {
-  // Nav scroll listener
   window.addEventListener('scroll', handleNavScroll, { passive: true });
 
-  // Give Bootstrap a tick to initialize before touching the navbar
-  setTimeout(() => showPage('home'), 0);
-
-  // Contact form
-  const form = document.getElementById('contactForm');
-  if (form) form.addEventListener('submit', handleContactSubmit);
-  
-  // Gallery lightbox - add click handlers to all gallery images
-  document.querySelectorAll('.gallery-item img').forEach(img => {
-    img.style.cursor = 'pointer';
-    img.addEventListener('click', function() {
-      openGalleryModal(this);
-    });
-  });
-  
-  // Fade-in animation for gallery items on scroll
-  // Triggers when 25% of the image is visible in viewport
+  // Set up intersection observer before loading gallery
   galleryObserverInstance = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('fade-in');
-        galleryObserverInstance.unobserve(entry.target); // Only animate once per view
+        galleryObserverInstance.unobserve(entry.target);
       }
     });
   }, { threshold: 0.25 });
-  
-  // Initially set all items to opacity 0, then observe them
-  document.querySelectorAll('.gallery-item').forEach(item => {
-    galleryObserverInstance.observe(item);
+
+  // Load gallery from JSON, then show home page
+  loadGallery().then(() => {
+    setTimeout(() => showPage('home'), 0);
   });
-  
-  // Keyboard navigation for gallery modal
+
+  const form = document.getElementById('contactForm');
+  if (form) form.addEventListener('submit', handleContactSubmit);
+
   document.addEventListener('keydown', (e) => {
     const modal = document.getElementById('galleryModal');
     if (modal.style.display === 'flex') {
@@ -236,10 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'Escape') closeGalleryModal();
     }
   });
-  
-  // Close modal on overlay click
+
   document.querySelector('.gallery-modal-overlay').addEventListener('click', closeGalleryModal);
-  
-  // Gallery scroll to top button
   window.addEventListener('scroll', handleGalleryScroll, { passive: true });
 });
