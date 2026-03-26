@@ -1458,7 +1458,7 @@ a { text-decoration: none; color: inherit; }
 
 /* Contact socials block */
 .contact-socials-wrap { margin-top: 32px; }
-.contact-socials { display: flex; flex-wrap: nowrap; gap: 8px; margin-top: 10px; justify-content: center; }
+.contact-socials { display: flex; flex-wrap: nowrap; gap: 8px; margin-top: 10px;  }
 
 /* Full-width button */
 .btn-full { width: 100%; justify-content: center; }
