@@ -1,5 +1,5 @@
 /* ============================================================
-   FlicksByNick — Main JavaScript
+   NicksFlicks — Main JavaScript
    ============================================================ */
 
 /* ── Page Navigation ── */
@@ -29,6 +29,10 @@ function showPage(id) {
     resetGalleryAnimations();
   }
 
+  if (id === 'about') {
+    animateCounters();
+  }
+
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
@@ -46,7 +50,7 @@ function buildGalleryItem(photo) {
 
   const watermark = document.createElement('div');
   watermark.className = 'gallery-watermark';
-  watermark.innerHTML = '<span>FlicksByNick</span>';
+  watermark.innerHTML = '<span>NicksFlicks</span>';
 
   const tag = document.createElement('div');
   tag.className = 'gallery-sport-tag';
@@ -228,6 +232,34 @@ function handleContactSubmit(e) {
       document.getElementById('contactForm').reset();
     }, 2500);
   }, 1200);
+}
+
+/* ── Counter Animation ── */
+function animateCounters() {
+  const counters = document.querySelectorAll('.counter');
+  const duration = 500; // 1 second
+  const framerate = 50; // update 50 times per second
+
+  counters.forEach(counter => {
+    // Reset counter to 0
+    counter.textContent = '0';
+    
+    const target = parseInt(counter.dataset.target);
+    const suffix = counter.dataset.suffix || '';
+    let current = 0;
+    const increment = target / (duration / (1000 / framerate));
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        counter.textContent = current + suffix;
+        clearInterval(timer);
+      } else {
+        counter.textContent = Math.floor(current) + suffix;
+      }
+    }, 1000 / framerate);
+  });
 }
 
 /* ── Init ── */
