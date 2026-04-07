@@ -63,6 +63,16 @@ function buildGalleryItem(photo) {
   return div;
 }
 
+/* ── Shuffle Array (Fisher-Yates) ── */
+function shuffleArray(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 async function loadGallery() {
   const grid = document.getElementById('galleryGrid');
   if (!grid) return;
@@ -72,9 +82,12 @@ async function loadGallery() {
     if (!res.ok) throw new Error('Failed to load gallery-data.json');
     const photos = await res.json();
 
+    // Randomize the order of photos
+    const shuffledPhotos = shuffleArray(photos);
+
     grid.innerHTML = '';
 
-    photos.forEach(photo => {
+    shuffledPhotos.forEach(photo => {
       const item = buildGalleryItem(photo);
       grid.appendChild(item);
     });
