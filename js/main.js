@@ -155,6 +155,7 @@ let visibleGalleryImages = [];
 function openGalleryModal(imgElement) {
   const modal = document.getElementById('galleryModal');
   const modalImg = document.getElementById('galleryModalImage');
+  const downloadBtn = document.getElementById('galleryDownloadBtn');
 
   visibleGalleryImages = Array.from(document.querySelectorAll('.gallery-item')).filter(item => {
     return item.style.display !== 'none';
@@ -164,6 +165,7 @@ function openGalleryModal(imgElement) {
   currentGalleryIndex = visibleGalleryImages.indexOf(clickedItem);
 
   modalImg.src = imgElement.src;
+  downloadBtn.href = imgElement.src;
   modal.style.display = 'flex';
   updateGalleryCounter();
 
@@ -189,9 +191,11 @@ function prevGalleryImage() {
 
 function updateGalleryModalImage() {
   const modalImg = document.getElementById('galleryModalImage');
+  const downloadBtn = document.getElementById('galleryDownloadBtn');
   const galleryItem = visibleGalleryImages[currentGalleryIndex];
   const img = galleryItem.querySelector('img');
   modalImg.src = img.src;
+  downloadBtn.href = img.src;
   updateGalleryCounter();
 }
 
@@ -216,6 +220,17 @@ function handleGalleryScroll() {
 /* ── Contact Form ── */
 function handleContactSubmit(e) {
   e.preventDefault();
+  
+  const nameField = document.getElementById('contactName');
+  const emailField = document.getElementById('contactEmail');
+  const messageField = document.getElementById('contactMessage');
+  
+  // Validate all fields are filled
+  if (!nameField.value.trim() || !emailField.value.trim() || !messageField.value.trim()) {
+    alert('Please fill out all fields before submitting.');
+    return;
+  }
+  
   const btn = document.getElementById('submitBtn');
   const originalText = btn.textContent;
 
