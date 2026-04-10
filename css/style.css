@@ -309,7 +309,7 @@ a { text-decoration: none; color: inherit; }
 
 .hero-scroll {
   position: absolute;
-  bottom: 36px;
+  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -1663,7 +1663,7 @@ a { text-decoration: none; color: inherit; }
 /* Main title */
 .about-main-title {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  font-size: clamp(2.2rem, 3.9vw, 4.4rem);
   line-height: 0.9;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -1715,7 +1715,7 @@ a { text-decoration: none; color: inherit; }
   }
 
   .about-left-col {
-    min-height: 100vh;
+    min-height: 90vh;
     padding: 110px 24px 48px;
     position: relative;
     z-index: 2;
@@ -1792,11 +1792,11 @@ a { text-decoration: none; color: inherit; }
 ══════════════════════════════════════════════════════════ */
 
 #page-contact .contact-header {
-  padding: 100px 64px 48px;
+  padding: 80px 64px 28px;
 }
 
 #page-contact .contact-body-section {
-  padding: 0 64px 100px;
+  padding: 0 64px 40px;
 }
 
 #page-contact .contact-body-row {
@@ -1867,7 +1867,7 @@ a { text-decoration: none; color: inherit; }
     align-items: center;
     gap: 8px;
     position: absolute;
-    bottom: 36px;
+    bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 3;
