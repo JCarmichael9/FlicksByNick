@@ -964,6 +964,8 @@ a { text-decoration: none; color: inherit; }
 
 .contact-header { padding: 80px 64px 20px; }
 
+#contactForm { margin-top: -20px; }
+
 .contact-form-field { margin-bottom: 16px; }
 
 .contact-form-field label {
