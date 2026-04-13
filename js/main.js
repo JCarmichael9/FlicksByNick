@@ -76,42 +76,46 @@ function shuffleArray(array) {
   }
   return arr;
 }
-
 async function loadGallery() {
   const grid = document.getElementById('galleryGrid');
   if (!grid) return;
 
+  // Paste your published Google Sheet CSV URL here:
+const CSV_URL = `https://docs.google.com/spreadsheets/d/e/2PACX-1vTOqdRiTncUrIdkpOzHSRpXhxUE4hIVTw0bqZ3sa4xzNeQDR1mK52wVH5kJdovVIym0Kt8hZ78Sukhr/pub?gid=0&single=true&output=csv&t=${Date.now()}`;
   try {
-    const res = await fetch('gallery-data.json');
-    if (!res.ok) throw new Error('Failed to load gallery-data.json');
-    const photos = await res.json();
+    const res = await fetch(CSV_URL);
+    if (!res.ok) throw new Error('Failed to load sheet');
+    const text = await res.text();
 
-    // Randomize the order of photos
-    const shuffledPhotos = shuffleArray(photos);
+    // Parse CSV into array of objects
+    const [headerLine, ...rows] = text.trim().split('\n');
+    const headers = headerLine.split(',').map(h => h.trim().replace(/^"|"$/g, ''));
+    const photos = rows.map(row => {
+      const values = row.match(/(".*?"|[^,]+)(?=\s*,|\s*$)/g) || [];
+      const obj = {};
+      headers.forEach((h, i) => {
+        obj[h] = (values[i] || '').replace(/^"|"$/g, '').trim();
+      });
+      return obj;
+    }).filter(p => p.src);
 
+    const shuffled = shuffleArray(photos);
     grid.innerHTML = '';
+    shuffled.forEach(photo => grid.appendChild(buildGalleryItem(photo)));
 
-    shuffledPhotos.forEach(photo => {
-      const item = buildGalleryItem(photo);
-      grid.appendChild(item);
-    });
-
-    // Re-attach intersection observer to new items
     document.querySelectorAll('.gallery-item').forEach(item => {
       item.style.opacity = '0';
       galleryObserverInstance.observe(item);
     });
 
-    // Update modal total count
     const totalEl = document.getElementById('galleryImageTotal');
     if (totalEl) totalEl.textContent = photos.length;
 
   } catch (err) {
     console.error('Gallery load error:', err);
-    grid.innerHTML = '<p style="color:var(--muted);padding:40px;text-align:center;">Unable to load gallery. Make sure gallery-data.json is in the same folder.</p>';
+    grid.innerHTML = '<p style="color:var(--muted);padding:40px;text-align:center;">Unable to load gallery.</p>';
   }
 }
-
 /* ── Reset Gallery Animations ── */
 function resetGalleryAnimations() {
   document.querySelectorAll('.gallery-item').forEach(item => {
